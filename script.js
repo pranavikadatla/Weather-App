@@ -3,9 +3,11 @@ const map=document.getElementById("map");
 let weatherData= document.getElementById("weatherData");
 const firstpage=document.getElementById("firstpage");
 const secondpage=document.getElementById("secondpage");
+const heading=document.getElementById("heading");
 function getLocation() {
     firstpage.style.display='none';
     secondpage.style.display='block';
+    heading.innerText="Here Is Your Location";
    if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
     
