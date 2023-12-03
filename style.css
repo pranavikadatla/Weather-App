@@ -1,0 +1,36 @@
+body{
+    background-color: rgb(14, 14, 78);
+
+}
+#weatherHeading{
+     color: white;
+     font-size:80px;
+
+}
+#btn{
+    padding:10px 30px;
+    font-size: 20px;
+}
+#firstpage{
+
+    text-align: center;
+}
+#secondpage{
+    display:none;
+    padding:4px;
+   color: white;
+}
+#weatherData{
+    background-color: white;
+    color:rgb(14, 14, 78);
+    
+}
+.weatherInfo{
+    margin:15px;
+    justify-content: space-between;
+    align-items: center;
+    padding:15px;
+    border-radius:;
+    background-color:rgb(14,14,78);
+    color:white;
+}
