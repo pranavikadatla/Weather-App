@@ -24,13 +24,13 @@ function showMap(latitude,longitude){
     getWeatherReport( latitude,longitude);
 }
 function getWeatherReport( lat,long){
-    const apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=7731a1e5be0459ca3e196363e9ab0fa5&units=metric`;
+    const apiUrl =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=fd4825f30c609974cb823fac79f7c626&units=metric`;
 
     fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
            console.log("Weatherstack API Response:", data);
-           displayWeatherData(data.timelines.daily.values);
+           displayWeatherData(data);
             
         })
         .catch(error => console.error(`Error fetching weather data: ${error.message}`));
@@ -38,15 +38,33 @@ function getWeatherReport( lat,long){
     function displayWeatherData(data){
     
         weatherData.innerHTML=`
-        
-        <button class="weatherInfo">Humidity:${data.humidityAvg}</button>
-        <button class="weatherInfo">Time Zone:${data.timeZone}</button ><br>
-        <button class="weatherInfo"> Pressure:${data.pressureAvg}</button >
-        <button class="weatherInfo"> Wind Speed:${data.windSpeedAvg}</button >
-        <button class="weatherInfo">Wind Direction:${data.windDirectionAvg}</button><br>
-        <button class="weatherInfo">UVIndex:${uvIndexAvg}</button >
-        <button class="weatherInfo"> Feels Like:${data.temperatureAvg}</button >`
+        <button class="weatherInfo">Location:${data.name}</button>
+        <button class="weatherInfo">Humidity:${data.main.humidity}</button>
+        <button class="weatherInfo">Time Zone:${data.timezone}</button ><br>
+        <button class="weatherInfo"> Pressure:${data.main.pressure}</button >
+        <button class="weatherInfo"> Wind Speed:${data.wind.speed}</button >
+        <button class="weatherInfo">Wind Direction:${degreeToDirection(data.wind.deg)}</button><br>
+        <button class="weatherInfo">Temperature:${data.main.temp}</button >
+        <button class="weatherInfo"> Feels Like:${data.main.feels_like}</button >`
     }
-    
+    function degreeToDirection(degree){
+        if (degree >= 337.5 || degree < 22.5) {
+            return "North";
+          } else if (degree >= 22.5 && degree < 67.5) {
+            return "North East";
+          } else if (degree >= 67.5 && degree < 112.5) {
+            return "East";
+          } else if (degree >= 112.5 && degree < 157.5) {
+            return "South East";
+          } else if (degree >= 157.5 && degree < 202.5) {
+            return "South";
+          } else if (degree >= 202.5 && degree < 247.5) {
+            return "South West";
+          } else if (degree >= 247.5 && degree < 292.5) {
+            return "West";
+          } else {
+            return "North West";
+          }
+    }
        
 

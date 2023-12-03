@@ -30,7 +30,7 @@ body{
     justify-content: space-between;
     align-items: center;
     padding:15px;
-    border-radius:;
+    border-radius:10px;
     background-color:rgb(14,14,78);
     color:white;
 }
